@@ -1,0 +1,31 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+env:
+  CARGO_TERM_COLOR: always
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: Swatinem/rust-cache@v2
+      - name: build
+        run: cargo build --release --locked
+      - name: package
+        shell: pwsh
+        run: |
+          Copy-Item target/release/listray-lite.exe listray-lite.exe
+          (Get-FileHash listray-lite.exe -Algorithm SHA256).Hash.ToLower() + "  listray-lite.exe" | Set-Content -Encoding ascii listray-lite.exe.sha256
+      - uses: softprops/action-gh-release@v3
+        with:
+          files: |
+            listray-lite.exe
+            listray-lite.exe.sha256
+          generate_release_notes: true

@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  check:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: Swatinem/rust-cache@v2
+      - name: clippy
+        run: cargo clippy --all-targets -- -D warnings
+      # 端到端测试和读取本机 Directory Opus 的测试依赖真实桌面，CI 上只跑纯逻辑测试
+      - name: test
+        run: cargo test --bins -- --skip reads_real_dopus_lister
