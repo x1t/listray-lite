@@ -6,9 +6,13 @@
 
 单文件绿色 exe · 312 KB · 常驻内存约 1.6 MB · 免安装
 
+[![CI](https://github.com/x1t/listray-lite/actions/workflows/ci.yml/badge.svg)](https://github.com/x1t/listray-lite/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/x1t/listray-lite?label=release)](https://github.com/x1t/listray-lite/releases/latest)
 ![Rust](https://img.shields.io/badge/Rust-2024-orange?logo=rust)
 ![Platform](https://img.shields.io/badge/Windows-10%20%7C%2011-0078D4?logo=windows)
 ![Size](https://img.shields.io/badge/exe-312%20KB-success)
+
+### [⬇️ 下载最新版 listray-lite.exe](https://github.com/x1t/listray-lite/releases/latest/download/listray-lite.exe)
 
 </div>
 
@@ -43,7 +47,8 @@
 
 ## 🚀 使用
 
-1. 下载或自行编译得到 `listray-lite.exe`
+1. 从 [Releases](https://github.com/x1t/listray-lite/releases/latest) 下载 `listray-lite.exe`（也可以按下方"从源码编译"自行编译）。
+   校验文件 `listray-lite.exe.sha256` 同在 Release 里，PowerShell 中用 `Get-FileHash listray-lite.exe` 对比即可
 2. 双击运行，右下角托盘出现一个文件夹图标
 3. 照常使用，需要时按 `Ctrl+G`
 
